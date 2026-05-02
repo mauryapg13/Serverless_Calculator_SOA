@@ -9,6 +9,10 @@ def app(environ, start_response):
         ])
         return [b'']
         
+    if environ['REQUEST_METHOD'] == 'GET':
+        start_response('200 OK', [('Content-Type', 'application/json')])
+        return [json.dumps({'status': 'Calculator API is running', 'message': 'Send a POST request to this endpoint to calculate.'}).encode('utf-8')]
+        
     if environ['REQUEST_METHOD'] == 'POST':
         try:
             content_length = int(environ.get('CONTENT_LENGTH', 0))
