@@ -211,7 +211,16 @@ function drawSnake() {
 }
 
 function advanceSnake() {
-    const head = {x: snake[0].x + dx, y: snake[0].y + dy};
+    let newX = snake[0].x + dx;
+    let newY = snake[0].y + dy;
+
+    if (newX < 0) newX = canvas.width - gridSize;
+    else if (newX >= canvas.width) newX = 0;
+    
+    if (newY < 0) newY = canvas.height - gridSize;
+    else if (newY >= canvas.height) newY = 0;
+
+    const head = {x: newX, y: newY};
     snake.unshift(head);
     
     const didEatFood = snake[0].x === food.x && snake[0].y === food.y;
@@ -263,11 +272,7 @@ function hasGameEnded() {
     for (let i = 4; i < snake.length; i++) {
         if (snake[i].x === snake[0].x && snake[i].y === snake[0].y) return true;
     }
-    const hitLeftWall = snake[0].x < 0;
-    const hitRightWall = snake[0].x >= canvas.width;
-    const hitToptWall = snake[0].y < 0;
-    const hitBottomWall = snake[0].y >= canvas.height;
-    return hitLeftWall || hitRightWall || hitToptWall || hitBottomWall;
+    return false;
 }
 
 exitBtn.addEventListener('click', () => {
