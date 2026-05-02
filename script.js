@@ -73,7 +73,7 @@ async function calculate() {
     resultDisplay.classList.add('loading');
     
     try {
-        const response = await fetch('/api/calculator', {
+        const response = await fetch('/api/index', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
