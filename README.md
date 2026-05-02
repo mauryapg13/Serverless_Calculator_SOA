@@ -42,9 +42,4 @@ This project is optimized for zero-configuration deployment on Vercel.
 
 Vercel will automatically serve `index.html` as the static homepage and configure `api/index.py` as your serverless API endpoint.
 
-## 🧠 SOA & VIVA Key Concepts
 
-If you are presenting this project, keep these architectural concepts in mind:
-- **Loose Coupling:** The UI doesn't care what language the backend is written in, as long as it receives standard JSON.
-- **Statelessness:** The backend has no memory, sessions, or databases. It spins up, calculates, returns the answer, and shuts down.
-- **Numerical Limits:** Safe accuracy up to ~9 Quadrillion ($9 \times 10^{15}$) and absolute calculation limits up to $1.79 \times 10^{308}$.
